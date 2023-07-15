@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import {interval, Observable} from "rxjs";
 
 @Component({
-  selector: 'app-child',
+  selector: 'app-leaking-child',
   standalone: true,
   imports: [CommonModule],
   template: `

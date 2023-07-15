@@ -1,17 +1,22 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {LeakingChildComponent} from "./leaking-child.component";
+import {SignalChildComponent} from "./signal-child.component";
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, LeakingChildComponent],
+  imports: [CommonModule, LeakingChildComponent, SignalChildComponent],
 
   template: `
     <div class="app-header">{{title}}</div>
     <div class="app-container">
-      <div><button class="app-button" type="button" (click)="toggleChild()">Toggle Child</button></div>
-      <app-child *ngIf="childVisible"/>
+      <div>
+        <button class="app-button" type="button" (click)="toggleLeakingChild()">Toggle Leaking Child</button>
+        <button class="app-button" type="button" (click)="toggleSignalChild()">Toggle Signal Child</button>
+      </div>
+      <app-leaking-child *ngIf="leakingChildVisible"/>
+      <app-signal-child *ngIf="signalChildVisible"/>
     </div>
   `,
   styles: [
@@ -38,9 +43,14 @@ import {LeakingChildComponent} from "./leaking-child.component";
 })
 export class AppComponent {
   title = 'example-app-destroyref';
-  childVisible = true;
+  leakingChildVisible = false;
+  signalChildVisible = true;
 
-  toggleChild() {
-    this.childVisible = !this.childVisible;
+  toggleLeakingChild() {
+    this.leakingChildVisible = !this.leakingChildVisible;
+  }
+
+  toggleSignalChild() {
+    this.signalChildVisible = !this.signalChildVisible;
   }
 }
