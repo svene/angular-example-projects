@@ -9,7 +9,17 @@ import {interval, Observable} from "rxjs";
   template: `
     <div class="component-container">Leaking Child</div>
   `,
-  styleUrls: ['./leaking-child.component.scss'],
+  styles: [
+    `
+      .component-container {
+        color: white;
+        background-color: green;
+        margin: 5px;
+        padding: 10px;
+        border-radius: 5px;
+      }
+    `
+  ],
 })
 export class LeakingChildComponent implements OnInit, OnDestroy {
   counter$!: Observable<number>;

@@ -14,7 +14,27 @@ import {LeakingChildComponent} from "./leaking-child.component";
       <app-child *ngIf="childVisible"/>
     </div>
   `,
-  styleUrls: ['./app.component.scss'],
+  styles: [
+    `
+      .app-header {
+        margin: 10px 0 10px 0;
+      }
+      .app-button {
+        color: white;
+        background-color: #000d6e;
+        border-radius: 3px;
+      }
+      .app-container {
+        background-color: white;
+        border-style: dashed;
+        border-width: 1px;
+        padding: 10px;
+        border-radius: 5px;
+
+        width: 10%;
+      }
+    `
+  ],
 })
 export class AppComponent {
   title = 'example-app-destroyref';
