@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {ChildComponent} from "./child.component";
+import {LeakingChildComponent} from "./leaking-child.component";
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, ChildComponent],
+  imports: [CommonModule, LeakingChildComponent],
 
   template: `
     <div class="app-header">{{title}}</div>

@@ -7,17 +7,17 @@ import {interval, Observable} from "rxjs";
   standalone: true,
   imports: [CommonModule],
   template: `
-    <div class="component-container">Child</div>
+    <div class="component-container">Leaking Child</div>
   `,
-  styleUrls: ['./child.component.scss'],
+  styleUrls: ['./leaking-child.component.scss'],
 })
-export class ChildComponent implements OnInit, OnDestroy {
+export class LeakingChildComponent implements OnInit, OnDestroy {
   counter$!: Observable<number>;
   id = new Date().getTime()
   ngOnInit(): void {
     console.log('Child: ngOnInit');
     this.counter$ = interval(1000);
-    this.counter$.subscribe(it => console.count(`id: ${this.id}`));
+    this.counter$.subscribe(_ => console.count(`id: ${this.id}`));
   }
 
   ngOnDestroy(): void {
