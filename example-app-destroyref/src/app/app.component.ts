@@ -43,7 +43,7 @@ import {SignalChildComponent} from "./signal-child.component";
 })
 export class AppComponent {
   title = 'example-app-destroyref';
-  leakingChildVisible = false;
+  leakingChildVisible = true;
   signalChildVisible = true;
 
   toggleLeakingChild() {
