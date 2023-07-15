@@ -10,13 +10,17 @@ import {ChildComponent} from "./child.component";
   template: `
     <div class="app-header">{{title}}</div>
     <div class="app-container">
-      <div>App</div>
-      <app-child/>
-      <div>App</div>
+      <div><button class="app-button" type="button" (click)="toggleChild()">Toggle Child</button></div>
+      <app-child *ngIf="childVisible"/>
     </div>
   `,
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
   title = 'example-app-destroyref';
+  childVisible = true;
+
+  toggleChild() {
+    this.childVisible = !this.childVisible;
+  }
 }

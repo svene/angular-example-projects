@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -6,9 +6,16 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [CommonModule],
   template: `
-    <div class="component-container">child</div>
+    <div class="component-container">Child</div>
   `,
   styleUrls: ['./child.component.scss'],
 })
-export class ChildComponent {
+export class ChildComponent implements OnInit, OnDestroy {
+  ngOnInit(): void {
+    console.log('Child: ngOnInit');
+  }
+
+  ngOnDestroy(): void {
+    console.log('Child: ngOnDestroy');
+  }
 }
