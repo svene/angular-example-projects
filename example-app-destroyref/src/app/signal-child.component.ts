@@ -35,10 +35,10 @@ export class SignalChildComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    console.log('Child: ngOnInit');
+    console.log('SignalChild: ngOnInit');
   }
 
   ngOnDestroy(): void {
-    console.log('Child: ngOnDestroy');
+    console.log('SignalChild: ngOnDestroy');
   }
 }

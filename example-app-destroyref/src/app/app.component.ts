@@ -11,24 +11,23 @@ import {BaloiseDesignSystemModule} from "@baloise/design-system-components-angul
   styleUrls: ['app.component.scss'],
   template: `
     <bal-app>
-      <bal-heading level="h1" space="bottom">Heading</bal-heading>
-      <bal-card>
-        <bal-card-title>BaloiseCombi</bal-card-title>
+      <bal-heading level="h1" space="bottom">{{title}}</bal-heading>
+      <bal-card style="width: 50%; margin: 20px">
+        <bal-card-title>Children</bal-card-title>
+        <bal-card-content>
+          <app-leaking-child *ngIf="leakingChildVisible"/>
+          <app-signal-child *ngIf="signalChildVisible"/>
+        </bal-card-content>
+        <bal-card-actions>
+          <bal-button (click)="toggleLeakingChild()">Toggle Leaking Child</bal-button>
+          <bal-button (click)="toggleSignalChild()">Toggle Signal Child</bal-button>
+        </bal-card-actions>
       </bal-card>
-      <h1 class="title is-size-xxx-large">{{title}}</h1>
-    <div class="app-container">
-      <div>
-        <button class="app-button" type="button" (click)="toggleLeakingChild()">Toggle Leaking Child</button>
-        <button class="app-button" type="button" (click)="toggleSignalChild()">Toggle Signal Child</button>
-      </div>
-      <app-leaking-child *ngIf="leakingChildVisible"/>
-      <app-signal-child *ngIf="signalChildVisible"/>
-    </div>
     </bal-app>
   `,
 })
 export class AppComponent {
-  title = 'example-app-destroyref';
+  title = 'Example: DestroyRef';
   leakingChildVisible = false;
   signalChildVisible = true;
 

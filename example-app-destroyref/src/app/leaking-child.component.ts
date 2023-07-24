@@ -33,11 +33,11 @@ export class LeakingChildComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    console.log('Child: ngOnInit');
+    console.log('LeakingChild: ngOnInit');
     this.counter$.subscribe(_ => {});
   }
 
   ngOnDestroy(): void {
-    console.log('Child: ngOnDestroy');
+    console.log('LeakingChild: ngOnDestroy');
   }
 }

@@ -1,5 +1,6 @@
-import { ApplicationConfig } from '@angular/core';
+import { ApplicationConfig, importProvidersFrom } from '@angular/core';
+import { BaloiseDesignSystemModule } from '@baloise/design-system-components-angular';
 
 export const appConfig: ApplicationConfig = {
-  providers: []
+  providers: [importProvidersFrom(BaloiseDesignSystemModule.forRoot())],
 };
