@@ -11,25 +11,36 @@ import {BaloiseDesignSystemModule} from "@baloise/design-system-components-angul
   styleUrls: ['app.component.scss'],
   template: `
     <bal-app>
-      <bal-heading level="h1" space="bottom">{{title}}</bal-heading>
-      <bal-card style="width: 50%; margin: 20px">
-        <bal-card-title>Children</bal-card-title>
+      <bal-card class="app-card">
+        <bal-card-title>{{title}}</bal-card-title>
+        <bal-card-subtitle>use toSignal() instead of takeUntil(destroy$)</bal-card-subtitle>
+        <bal-card-content>
+        <bal-field>
+          <bal-field-label>Options</bal-field-label>
+          <bal-field-control>
+              <bal-checkbox [value]="leakingChildVisible" (balChange)="toggleLeakingChild()">Leaking Child</bal-checkbox>
+              <bal-checkbox [value]="signalChildVisible" (balChange)="toggleSignalChild()">Signal Child</bal-checkbox>
+          </bal-field-control>
+        </bal-field>
+        <bal-card-actions>
+        </bal-card-actions>
+        </bal-card-content>
+      </bal-card>
+
+      <bal-card class="app-card">
+        <bal-card-title>Content</bal-card-title>
         <bal-card-content>
           <app-leaking-child *ngIf="leakingChildVisible"/>
           <app-signal-child *ngIf="signalChildVisible"/>
         </bal-card-content>
-        <bal-card-actions>
-          <bal-button (click)="toggleLeakingChild()">Toggle Leaking Child</bal-button>
-          <bal-button (click)="toggleSignalChild()">Toggle Signal Child</bal-button>
-        </bal-card-actions>
       </bal-card>
     </bal-app>
   `,
 })
 export class AppComponent {
-  title = 'Example: DestroyRef';
+  title = 'DestroyRef Demo';
   leakingChildVisible = false;
-  signalChildVisible = true;
+  signalChildVisible = false;
 
   toggleLeakingChild() {
     this.leakingChildVisible = !this.leakingChildVisible;
