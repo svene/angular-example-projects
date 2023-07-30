@@ -13,7 +13,7 @@ import {LetDirective} from "@ngrx/component";
   styleUrls: ['app.component.scss'],
   providers: [AppStore],
   template: `
-    <bal-app *ngrxLet="vm$ as vm">
+    <bal-app *ngrxLet="appStore.vm$ as vm">
       <bal-card class="app-card">
         <bal-card-title>{{title}}</bal-card-title>
         <bal-card-subtitle>use toSignal() instead of takeUntil(destroy$)</bal-card-subtitle>
@@ -21,8 +21,8 @@ import {LetDirective} from "@ngrx/component";
         <bal-field>
           <bal-field-label>Options</bal-field-label>
           <bal-field-control>
-              <bal-checkbox [value]="vm.leakingChildVisible" (balChange)="toggleLeakingChild()">Leaking Child</bal-checkbox>
-              <bal-checkbox [value]="vm.signalChildVisible" (balChange)="toggleSignalChild()">Signal Child</bal-checkbox>
+              <bal-checkbox [value]="vm.leakingChildVisible" (balChange)="appStore.toggleLeakingChild()">Leaking Child</bal-checkbox>
+              <bal-checkbox [value]="vm.signalChildVisible" (balChange)="appStore.toggleSignalChild()">Signal Child</bal-checkbox>
           </bal-field-control>
         </bal-field>
         <bal-card-actions>
@@ -42,18 +42,10 @@ import {LetDirective} from "@ngrx/component";
 })
 export class AppComponent {
   title = 'DestroyRef Demo';
-  readonly vm$ = this.appStore.vm$;
 
   constructor(
-    private readonly appStore: AppStore
+    readonly appStore: AppStore
   ) {
   }
 
-  toggleLeakingChild() {
-    this.appStore.toggleLeakingChild();
-  }
-
-  toggleSignalChild() {
-    this.appStore.toggleSignalChild();
-  }
 }
