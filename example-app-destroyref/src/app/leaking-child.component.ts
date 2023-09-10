@@ -7,19 +7,8 @@ import {interval, Observable, tap} from "rxjs";
   standalone: true,
   imports: [CommonModule],
   template: `
-    <div class="component-container">Leaking Child</div>
+    <article>Leaking Child</article>
   `,
-  styles: [
-    `
-      .component-container {
-        color: white;
-        background-color: green;
-        margin: 5px;
-        padding: 10px;
-        border-radius: 5px;
-      }
-    `
-  ],
 })
 export class LeakingChildComponent implements OnInit, OnDestroy {
   counter$!: Observable<number>;

@@ -9,34 +9,25 @@ import {SignalChildComponent} from "./signal-child.component";
   imports: [CommonModule, LeakingChildComponent, SignalChildComponent],
 
   template: `
-    <div class="app-header">{{title}}</div>
-    <div class="app-container">
-      <div>
-        <button class="app-button" type="button" (click)="toggleLeakingChild()">Toggle Leaking Child</button>
-        <button class="app-button" type="button" (click)="toggleSignalChild()">Toggle Signal Child</button>
+    <main class="container">
+      <h1>{{title}}</h1>
+      <div class="grid">
+        <div><button class="app-button" type="button" (click)="toggleLeakingChild()">Toggle Leaking Child</button></div>
+        <div><button class="app-button" type="button" (click)="toggleSignalChild()">Toggle Signal Child</button></div>
       </div>
+
       <app-leaking-child *ngIf="leakingChildVisible"/>
+      <article *ngIf="!leakingChildVisible" class="black-background">NO Leaking Child</article>
+
       <app-signal-child *ngIf="signalChildVisible"/>
-    </div>
+      <article *ngIf="!signalChildVisible" class="black-background">NO Signal Child</article>
+    </main>
+
   `,
   styles: [
     `
-      .app-header {
-        margin: 10px 0 10px 0;
-      }
-      .app-button {
-        color: white;
-        background-color: #000d6e;
-        border-radius: 3px;
-      }
-      .app-container {
-        background-color: white;
-        border-style: dashed;
-        border-width: 1px;
-        padding: 10px;
-        border-radius: 5px;
-
-        width: 10%;
+      .black-background {
+        background-color: var(--h1-color);
       }
     `
   ],

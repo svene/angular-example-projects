@@ -8,19 +8,8 @@ import {toSignal} from "@angular/core/rxjs-interop";
   standalone: true,
   imports: [CommonModule],
   template: `
-    <div class="component-container">Signal Child</div>
+    <article>Signal Child</article>
   `,
-  styles: [
-    `
-      .component-container {
-        color: white;
-        background-color: green;
-        margin: 5px;
-        padding: 10px;
-        border-radius: 5px;
-      }
-    `
-  ],
 })
 export class SignalChildComponent implements OnInit, OnDestroy {
   counter$!: Observable<number>;
