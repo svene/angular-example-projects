@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {LeakingChildComponent} from "./leaking-child.component";
 import {SignalChildComponent} from "./signal-child.component";
@@ -7,11 +7,13 @@ import {SignalChildComponent} from "./signal-child.component";
   selector: 'app-root',
   standalone: true,
   imports: [CommonModule, LeakingChildComponent, SignalChildComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 
   template: `
     <div class="app-header">{{title}}</div>
     <div class="app-container">
       <div>
+        <sl-button size="small">Click me</sl-button>
         <button class="app-button" type="button" (click)="toggleLeakingChild()">Toggle Leaking Child</button>
         <button class="app-button" type="button" (click)="toggleSignalChild()">Toggle Signal Child</button>
       </div>
